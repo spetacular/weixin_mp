@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript">
+//全局变量，用于标识WeixinJSBridge是否完成初始化，0为未完成，1为已完成
+winxinJsBridgeReady = 0;
+//处理WeixinJSBridgeReady事件，当初始化完成后，将winxinJsBridgeReady标记为1
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+		winxinJsBridgeReady = 1;
+	} 
+});
+
+/**
+* 关闭WebView
+*/
+function closeWindow(){
+	////判断WeixinJSBridge是否完成初始化，未完成直接返回false
+	if(winxinJsBridgeReady === 0){
+		alert('WeixinJSBridge未初始化成功');
+		return false;
+	}
+	if(confirm("是否关闭网页？")){
+		alert('网页即将关闭');
+		WeixinJSBridge.invoke("closeWindow");//关闭WebView
+	}else{
+		alert('您选择不关闭网页');
+	}
+}
+</script>
+<title>关闭WebView演示</title>
+</head>
+<body>
+<p>点击下面的按钮关闭WebView</p>
+<input type=button value="关闭" onclick="closeWindow();">
+</body>
+</html>

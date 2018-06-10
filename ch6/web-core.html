@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>微信内置浏览器内核判断</title>
+</head>
+<body>
+<p>操作系统类型为：<span id="os_type"></span></p>
+<p>浏览器内核为：<span id="core_type"></span></p>
+</body>
+<script>
+    var os_type = '未知';
+    var core_type = '未知';
+    if(/iphone/i.test(navigator.userAgent)){//iOS
+        os_type = 'iOS';
+        if(window.__wxjs_is_wkwebview == undefined || window.__wxjs_is_wkwebview == false){
+            core_type = "UIWebview";
+        }else{
+            core_type = "WKWebview";
+        }
+    }else if(/android/i.test(navigator.userAgent)){
+        os_type = 'Android';
+        core_type = "Tencent X5";
+    }
+    document.getElementById('os_type').innerText = os_type;
+    document.getElementById('core_type').innerText = core_type;
+</script>
+</html>

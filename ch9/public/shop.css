@@ -1,0 +1,183 @@
+@charset "utf-8";
+	body {
+	font-family:"微软雅黑","Arial","Helvetica",sans-serif;
+	margin:5px;
+	padding:0;
+	color:#2f2f2f;
+	font-size:13px;
+	-webkit-text-size-adjust:none;
+	-ms-text-size-adjust:none;
+	-webkit-font-smoothing:antialiased;
+}
+div,h1,h2,h3,h4,h5,p,a,span,dl,dt,dd,ul,ol,li,form,textarea,input,img {
+	margin:0;
+	padding:0;
+}
+input,button,select,textarea {
+	font-size:15px;
+	font-family:"微软雅黑","Arial","Helvetica",sans-serif;
+	color:#383838;
+}
+li {
+	list-style:none;
+}
+a {
+	color:#000079;
+}
+a:active {
+	outline:none;
+}
+a:hover {
+	color:#f30;
+	text-decoration:underline;
+}
+img {
+	border:none;
+}
+i,cite,em,var,address {
+	font-style:normal;
+}
+html,body {
+	height:100%;
+}
+/* common */
+
+.error {
+	margin:0 auto;
+	padding:5px 0 5px;
+	text-align:center;
+	background:#fff;
+	color:red;
+}
+.error img {
+	width:246px;
+}
+
+.wrap {
+	position:relative;
+	height:100%;
+}
+
+.hide {
+	display:none
+}
+.show {
+	display:block
+}
+
+.bc_f9 {
+	background-color:#f9f9f9
+}
+/*表格*/
+table.gridtable {
+	font-family:verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width:1px;
+	border-color:#666666;
+	border-collapse:collapse;
+}
+table.gridtable th {
+	border-width:1px;
+	padding:8px;
+	border-style:solid;
+	border-color:#666666;
+	background-color:#dedede;
+}
+table.gridtable td {
+	border-width:1px;
+	padding:8px;
+	border-style:solid;
+	border-color:#666666;
+	background-color:#ffffff;
+}
+/*input表单*/
+input {
+	display:block;
+}
+input[type="text"] {
+	height:27px;
+	border:1px solid #d9d9d9;
+	margin:0px 1px;
+	width:98%;
+	overflow:hidden;
+}
+input[type="submit"] {
+	margin:5px 0 5px 5px;
+}
+label {
+	display:block;
+	margin:5px 0 5px 0;
+}
+.select {
+	width:150px;
+	height:30px;
+	overflow:hidden;
+	border:1px solid #ccc;
+	-moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+}
+.select select {
+	padding:5px;
+	background:transparent;
+	width:268px;
+	font-size:16px;
+	border:none;
+	height:30px;
+	-webkit-appearance:none;
+	/*for Webkit browsers*/
+}
+.block {
+	display:inline-block;
+	margin:0px 10px 5px 0px;
+}
+
+/*抽奖*/
+.container{
+	position:relative;
+	padding-top:10px;
+        width: 450px;
+}
+
+.container .mask {
+        height: 100px;
+        left: 20px;
+        position: absolute;
+        top: 15px;
+        width: 205px;
+        overflow:hidden;
+        text-align:center;
+        background:url("./images/prize.png") 6px 4px repeat-y transparent;
+}
+
+.container .mask2{
+	left: 138px;
+}
+
+.container .mask3{
+	left: 254px;
+}
+	
+.container div.frutmachine{
+	position:relative;
+	margin:0 auto;
+	height:200px;
+	background:url("./images/fruit-machine.png") 0 0 no-repeat transparent;
+}
+
+.container .share{
+        background-color: #FED404;
+        border-bottom: 5px solid #BD9F0B;
+        position:absolute;
+        left:60px;
+        top:110px;
+        color: #E22E51;
+        display: inline-block;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 30px;
+        margin-top: 20px;
+        text-align: center;
+        width: 272px;
+}

@@ -1,0 +1,19 @@
+
+
+<script src="public/md5.js"></script>
+<script src="public/sha1.js"></script>
+<script>
+function getSign()
+            {
+                var app_id = 'wxf8b4f85f3a794e77';
+                var app_key = '2Wozy2aksie1puXUBpWD8oZxiD1DfQuEaiC7KcRATv1Ino3mdopKaPGQQ7TtkNySuAmCaDCrw4xhPY5qKTBl7Fzm0RgR3c0WaVYIXZARsxzHV2x7iwPPzOz94dnwPWSn';
+                var nonce_str = 'abc';
+                var package_string = '123';
+                var time_stamp = '345';
+                //第一步，对所有需要传入的参数加上appkey作一次key＝value字典序的排序
+                var keyvaluestring = "appid="+app_id+"&appkey="+app_key+"&noncestr="+nonce_str+"&package="+package_string+"&timestamp="+time_stamp;
+                sign = CryptoJS.SHA1(keyvaluestring).toString();
+                return sign;
+            }
+			document.write(getSign());
+</script>

@@ -1,0 +1,78 @@
+body {
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+}
+
+table {
+	font-size: 1em;
+}
+
+.demo-description {
+	clear: both;
+	padding: 12px;
+	font-size: 1.3em;
+	line-height: 1.4em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+.btn_buy{ display:inline-block; width:60px; height:26px; border:solid 1px #e77c00; color:#fff; font-size:12px; font-family:SimSun, Tahoma, Verdana, Arial, sans-serif; font-weight:bold; cursor:pointer; line-height:26px;  text-align:center; vertical-align:middle; letter-spacing: 0.4em;text-indent:0.4em; box-shadow:0 1px 0 rgba(95,50,0,0.7); border-radius:3px; text-shadow:1px 1px 0 #cf7000;background-color:#ffb000; *filter:chroma(color=#000000); outline:none; }
+.btn_buy:hover{background-color:#f79700;border-color:#de7800;text-decoration:none;}
+.sold_out { display:inline-block; width:60px; height:26px; color:#999; text-align:center; }
+.sold_out:hover { text-decoration:none; }
+
+.room_select_box{ margin-bottom: 10px; border: 2px solid #ccc;}
+.date_change_box { padding:10px 10px 10px 496px; background-color:#F1F1F1; display:inline-block; }
+.date_change_box { display:block; overflow:hidden; }
+.date_change_box .left { float:left; display:inline; width:480px; margin-left:-480px; overflow:hidden; }
+.date_change_box .right { float:left; width:100%; overflow:hidden; }
+.date_change_box .title { margin:10px 0 20px 0; font:normal 18px/22px "microsoft yahei",simsun; }/* no_result */
+.date_change_box .pro_info { text-align:right; }
+.date_change_box .pro_info span { display:inline-block; _display:inline; max-width:182px;  padding:0 10px 0 26px; border-radius:0 12px 12px 0; background-position:-197px -313px;background-color:#85C220; color:#fff; line-height:24px; zoom:1; overflow:hidden; white-space:nowrap; }
+.date_change_box .input_txt { height:18px; margin-right:20px; line-height:18px; vertical-align:middle; }
+.date_change_box select { margin-right:20px; vertical-align:middle; }
+.date_change_box .btn { display:inline-block; width:70px; height:22px; background-color:#06c; line-height:22px; text-align:center; color:#fff; vertical-align:middle; }
+.date_change_box .btn:hover { background-color:#29f; text-decoration:none; }
+
+.room_list_loading { margin-bottom:10px; padding-top:124px; text-align:center; background:url(http://pic.c-ctrip.com/common/loading_50.gif) no-repeat 50% 40px; }
+.htl_room_table table { width:100%; table-layout:fixed; }
+.htl_room_table th { border-bottom:1px solid #ccc; font-weight:normal; text-align:left; line-height:30px; color:#4D4D4D; }
+.htl_room_table td { padding:10px 0; vertical-align:top;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAABAQMAAADdO609AAAABlBMVEXMzMz////TjRV2AAAAC0lEQVQIHWMIdQAAAO0AlrS3+YUAAAAASUVORK5CYII=) 0 100% repeat-x;*background:url(http://pic.c-ctrip.com/hotels121118/border_1px.png) repeat-x center 100%; }
+.htl_room_table th.text_right { padding-right:10px; }
+.htl_room_table .room_preis { font-weight: bold; color: #000;}
+.htl_room_table .col1 { width:166px;padding-left:10px; }
+.htl_room_table .col2 {  }
+.htl_room_table .col3 { width:60px; }
+.htl_room_table .col4 { width:50px; }
+.htl_room_table .col5 { width:76px; }
+.htl_room_table .col6 { width:158px; }
+.htl_room_table .col7 { padding-right: 15px; width:150px; text-align:right; white-space:nowrap; }
+
+
+
+.htl_room_table .group_hotel td{ border-top:2px solid #ccc; border-bottom: 0 none; background: none;}
+.htl_room_table .group_hotel .room_type .group_hotel_name{ float: left; margin-top: -1px; width: 90px; height: 52px; overflow: hidden;}
+.htl_room_table .child_name { padding:10px; zoom:1; }
+.htl_room_table .child_name span { display: inline-block; vertical-align: middle; margin:0 6px 2px 0; cursor:default; }
+.htl_room_table .last_room td { border-bottom:1px solid #ccc; background:none; }
+.htl_room_table .room_type { padding-left: 16px; width:160px;border-right:1px solid #ccc; border-bottom:1px solid #ccc; background:none; }
+.htl_room_table .room_unfold, .htl_room_table .room_fold { float:left; width:74px; }
+.htl_room_table .room_unfold span, .htl_room_table .room_fold span { padding:1px 18px 0 0; background-position:100% 1px; color:#333; }
+.htl_room_table .room_fold span {  background-position:100% -31px; }
+.htl_room_table .room_type .pic { float:left; width:50px; height:50px; margin-right:6px; border-radius:3px; background:url(http://pic.c-ctrip.com/hotels121118/bg_nopic1.png) no-repeat 50% 50%; overflow:hidden; }
+.room_type .pic img { width:50px; height:50px; }
+.htl_room_table .child_name .room_type_name { line-height:16px; cursor:auto; }
+
+.htl_room_table .base_txtdiv { border-bottom: 1px dashed #F60; }
+.htl_room_table .base_price, .htl_room_table .base_txtdiv { display: inline-block; vertical-align: top; font:normal 18px Tahoma; color:#F60; }
+.htl_room_table .base_price dfn,.htl_room_table .base_txtdiv dfn { margin-right:2px; color:#666; font-size:12px; vertical-align:4px; }
+.htl_room_table .base_price .j, .htl_room_table .base_txtdiv .j { font:normal 12px Tahoma; }
+.htl_room_table .hotel_pirce{ display: inline-block; vertical-align: top; padding-top: 2px; *padding-top: 4px; width: 88px;}
+.htl_room_table .hotel_pirce span{ display: inline-block; vertical-align: middle; *margin-bottom: 2px;}
+.hotel_pirce .ico_refund,.hotel_pirce .ico_coupon { margin-left: 3px;}
+.htl_room_table .base_txtdiv { color:#F60; font-family:Arial; border-bottom: 1px dashed #F60; }
+.htl_room_table .hotel_room_left { padding-right: 5px; color:#BB0000;}
+.htl_room_table .b_none { padding-left:9px; }
+
+.htl_room_table .clicked td { background:#F1F1F1; }

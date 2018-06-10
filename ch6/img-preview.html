@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script type="text/javascript">
+        //全局变量，用于标识WeixinJSBridge是否完成初始化，0为未完成，1为已完成
+        winxinJsBridgeReady = 0;
+        //处理WeixinJSBridgeReady事件，当初始化完成后，将winxinJsBridgeReady标记为1
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                winxinJsBridgeReady = 1;
+            }
+        });
+
+        /**
+         * 图片预览
+         */
+        function preview(){
+            ////判断WeixinJSBridge是否完成初始化，未完成直接返回false
+            if(winxinJsBridgeReady === 0){
+                alert('WeixinJSBridge未初始化成功');
+                return false;
+            }
+            WeixinJSBridge.invoke("imagePreview",{
+                "current": "https://www.weixinbook.net/demo/pics/1.jpg",
+                "urls":["https://www.weixinbook.net/demo/pics/1.jpg","https://www.weixinbook.net/demo/pics/2.jpg","https://www.weixinbook.net/demo/pics/3.jpg"]
+            },function(res){
+                alert(res.err_msg);
+            });
+
+
+
+        }
+    </script>
+    <title>图片预览演示</title>
+</head>
+<body>
+<p>点击下面的图片进行预览</p>
+<a onclick="preview();">
+    <img width="100%" src="./pics/1.jpg"/>
+</a>
+</body>
+</html>

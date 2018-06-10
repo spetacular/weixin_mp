@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript">
+//全局变量，用于标识WeixinJSBridge是否完成初始化，0为未完成，1为已完成
+winxinJsBridgeReady = 0;
+//处理WeixinJSBridgeReady事件，当初始化完成后，将winxinJsBridgeReady标记为1
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+		winxinJsBridgeReady = 1;
+	} 
+});
+
+/**
+* 分享到腾讯微博
+*/
+function shareWeibo(){
+	////判断WeixinJSBridge是否完成初始化，未完成直接返回false
+	if(winxinJsBridgeReady === 0){
+		alert('WeixinJSBridge未初始化成功');
+		return false;
+	}
+	var _title = document.title;
+	var _url = location.href;
+	var _appkey = encodeURI("")||"801000271"; //你从腾讯微博开放平台获得的appkey
+	var _site = "微信公众平台开发案例精粹"; //你的网站地址
+	var _pic = "http://mp.weixin.qq.com/wiki/images/c/c5/%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F.jpg";
+	_target = "toolbar=0,status=0,resizable=1,left="+((screen.width-613)>>1)+",top="+((screen.height-460)>>1);
+	var _u = "http://v.t.qq.com/share/share.php?url="+_url+"$&appkey=" + _appkey + "&site=" + _site + "&title="+_title+"$&pic="+_pic;
+	window.open(_u, 'null', _target);
+            return;
+}
+</script>
+<title>分享到腾讯微博演示</title>
+</head>
+<body>
+<p>点击下面的按钮跳转将本网页分享到腾讯微博</p>
+<input type=button value="分享到腾讯微博" onclick="shareWeibo();">
+</body>
+</html>
+

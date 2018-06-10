@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+<script>
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+		alert(' WeixinJSBridge初始化完成');
+	} 
+});
+window.onload=function() {
+	alert('页面加载完成');
+};
+$( document ).ready(function() {
+	alert('DOM加载完成');
+});
+
+</script>
+
+<title>WeixinJSBridge加载顺序演示</title>
+</head>
+<body>
+<p>WeixinJSBridge加载顺序演示</p>
+<ul>
+<li>第一：jQuery ready</li>
+<li>第二：window load</li>
+<li>第三：WeixinJSBridge ready</li>
+</ul>
+</body>
+</html>
+

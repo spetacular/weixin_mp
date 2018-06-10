@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript">
+//全局变量，用于标识WeixinJSBridge是否完成初始化，0为未完成，1为已完成
+winxinJsBridgeReady = 0;
+//处理WeixinJSBridgeReady事件，当初始化完成后，将winxinJsBridgeReady标记为1
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+		winxinJsBridgeReady = 1;
+	} 
+});
+/**
+* 显示分享按钮
+*/
+function show(){
+	//判断WeixinJSBridge是否完成初始化，完成即可执行命令，否则弹出提示
+	if(winxinJsBridgeReady === 1){
+		WeixinJSBridge.call('showOptionMenu');//显示分享按钮
+		document.getElementById('tips').innerHTML="分享按钮已显示!";
+	}else{
+		alert('WeixinJSBridge未初始化成功');
+	}
+}
+/**
+* 隐藏分享按钮
+*/
+function hide(){
+	//判断WeixinJSBridge是否完成初始化，完成即可执行命令，否则弹出提示
+	if(winxinJsBridgeReady === 1){
+		WeixinJSBridge.call('hideOptionMenu');//隐藏分享按钮
+		document.getElementById('tips').innerHTML="分享按钮已隐藏!";
+	}else{
+		alert('WeixinJSBridge未初始化成功');
+	}
+}
+</script>
+<title>隐藏/显示分享按钮演示</title>
+</head>
+<body>
+<p>点击下列的按钮隐藏/显示WebView右上角的分享按钮</p>
+<ul style="list-style-type:none;">
+<li><input type=button value="隐藏" onclick="hide();"></li>
+<li><input type=button value="显示" onclick="show();"></li>
+</ul>
+<span id="tips"></span>
+</body>
+</html>

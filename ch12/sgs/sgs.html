@@ -1,0 +1,92 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="./sgs-etc/sgs_icon.png">
+    <link href="//cdn.bootcss.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="./data.js"></script>
+
+    <title>测测你是三国杀里的谁</title>
+    <style type="text/css">
+        #content{
+            padding: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isandroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端
+        var isios = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var inwechat = /micromessenger/i.test(u);//是否在微信中打开
+
+        $( document ).ready(function() {
+            start();
+        });
+
+        function start () {
+            var content = $("#content");
+            if(!isandroid && !isios){
+                var small = screen.width > 400 ? (screen.width - 400) / 2 : 0;
+                var smallcss = 'margin:50px '+small+'px;'
+                content.attr('style',smallcss);
+            }
+            var html = '<h2 class="text-center">测测你是三国杀里的谁</h2><p><img style="width:100%" src="./sgs-etc/sgs_front.jpg"/></p><button class="btn btn-default btn-lg btn-block" onclick="show(0);">开始测试</button>';
+            content.html(html);
+        }
+
+        function show (index) {
+            var content = $("#content");
+            var item1 = data[index];
+            var ans = data[index]['answer'];
+            var ansLen = ans.length;
+            var ansHtml = '<h3 id="question">'+item1['question']+'</h3>';
+            for(var i=0;i<ansLen;i++){
+                var and = ans[i];
+                ansHtml += '<div class="radio"  style="font-size:20px;"><label>'
+                + '<input type="radio" name="act" id="radio-'+and['option']+'" act="'+and['action']+'" value="'+and['option']+'">'
+                + and['text']
+                + '</label></div>';
+            }
+            ansHtml += '<button class="btn btn-primary btn-lg btn-block" onclick="donext();" >下一题</button>';
+            content.html(ansHtml);
+
+        }
+        function donext () {
+            var checked = $("input[name=act]:checked");
+            if(checked.length == 0){
+                return false;
+            }
+            var content = $("#content");
+            var nextid = checked.attr('act');
+
+            if(nextid.indexOf('result') != -1){//result_N show result
+                var results = nextid.split('_');
+                var role = result[results[1]];
+                var resultHtml = '<h4 class="text-center">你是三国杀中的' + role.name + '</h4><p class="text-center"><img src="' + role.img + '" class="img-rounded"/></p>'
+                        + '<div class="panel panel-default"><div class="panel-body">'
+                        + role.text
+                        + '</div></div>';
+
+                if(!inwechat){
+                    resultHtml +='<div style="margin-left:10px;"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div></div>';
+                    //百度分享
+                    var bdText = "我是三国杀中的"+ role.name +"["+role.text+"]";
+                    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":bdText ,"bdMini":"2","bdMiniList":false,"bdPic":role.img,"bdStyle":"2","bdSize":"16"},"share":{}};
+
+                    with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];
+                }else{
+                    document.title="我是三国杀中的"+ role.name ;
+                }
+            }else{
+                show(nextid-1);
+            }
+            content.html(resultHtml);
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div id="content" class="container-fluid"></div>
+</body>
+</html>

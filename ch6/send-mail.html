@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript">
+//全局变量，用于标识WeixinJSBridge是否完成初始化，0为未完成，1为已完成
+winxinJsBridgeReady = 0;
+//处理WeixinJSBridgeReady事件，当初始化完成后，将winxinJsBridgeReady标记为1
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+		winxinJsBridgeReady = 1;
+	} 
+});
+
+/**
+* 发邮件
+*/
+function sendMail(){
+	////判断WeixinJSBridge是否完成初始化，未完成直接返回false
+	if(winxinJsBridgeReady === 0){
+		alert('WeixinJSBridge未初始化成功');
+		return false;
+	}
+	var title = '邮件标题';
+	var content = '通过微信发邮件，真是高上大！';	
+	WeixinJSBridge.invoke("sendEmail", {
+		title: title,
+		content: content
+	}, function (res) {
+		switch (res.err_msg) {
+			case 'send_email:ok':
+				alert('调用成功');
+				break;
+			case 'send_email:cancel':
+				alert('用户取消');
+				break;
+			case 'send_email:fail':
+				alert('调用失败');
+			case 'send_email:confirm':
+				alert('确认');
+				break;
+		}
+		alert(res.err_msg);
+
+	});
+	
+
+}
+</script>
+<title>发邮件演示</title>
+</head>
+<body>
+<p>点击下面的按钮发邮件</p>
+<input type=button value="发邮件" onclick="sendMail();">
+</body>
+</html>
+

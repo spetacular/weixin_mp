@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=screen-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript">
+//全局变量，用于标识WeixinJSBridge是否完成初始化，0为未完成，1为已完成
+winxinJsBridgeReady = 0;
+//处理WeixinJSBridgeReady事件，当初始化完成后，将winxinJsBridgeReady标记为1
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+		winxinJsBridgeReady = 1;
+	} 
+});
+
+/**
+* 分享到朋友圈
+*/
+function shareTimeline(){
+	////判断WeixinJSBridge是否完成初始化，未完成直接返回false
+	if(winxinJsBridgeReady === 0){
+		alert('WeixinJSBridge未初始化成功');
+		return false;
+	}
+	WeixinJSBridge.invoke("shareTimeline", {
+		img_url:"http://mp.weixin.qq.com/wiki/images/c/c5/%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F.jpg",
+		img_width: "240",
+		img_height: "240",
+		link: location.href,
+		desc: "微信公众平台开发案例精粹", 
+		title: document.title
+	}, function (res) {
+		alert(res.err_msg);
+	});
+
+
+}
+
+var dataForWeixin={
+		   appId:"",
+		   MsgImg:"http://mp.weixin.qq.com/wiki/images/c/c5/%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F.jpg",
+		   TLImg:"http://mp.weixin.qq.com/wiki/images/c/c5/%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F.jpg",
+		   url: location.href,
+		   title:"微信公众平台",
+		   desc:"微信公众平台开发案例精粹",
+		   
+		};
+
+		var $ShareConfig={img:"http://t0.qlogo.cn/mbloghead/9fc63b7d24a78eedb4f4/120",desc:"",content:"推荐刘福承的微博",title:"推荐刘福承的微博",cmpTitle:"#来自微博阅读插件# 推荐@love198725的微博"};
+</script>
+<title>分享到朋友圈演示</title>
+</head>
+<body>
+<p>点击下面的按钮跳转将本网页分享到朋友圈</p>
+<input type=button value="分享到朋友圈" onclick="shareTimeline();">
+</body>
+</html>
+
